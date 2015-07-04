@@ -19,6 +19,10 @@ namespace LevvionAI
         /// The floats
         /// </summary>
         private Dictionary<string, float> _floats;
+        /// <summary>
+        /// The _strings
+        /// </summary>
+        private Dictionary<string, string> _strings; 
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AIState"/> class.
@@ -28,6 +32,7 @@ namespace LevvionAI
             _bools = new Dictionary<string, bool>();
             _ints = new Dictionary<string, int>();
             _floats = new Dictionary<string, float>();
+            _strings = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -76,6 +81,21 @@ namespace LevvionAI
         }
 
         /// <summary>
+        /// Gets the float.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        public string GetString(string key)
+        {
+            if (_strings.ContainsKey(key))
+            {
+                return _strings[key];
+            }
+
+            return "";
+        }
+
+        /// <summary>
         /// Sets the bool.
         /// </summary>
         /// <param name="key">The key.</param>
@@ -106,6 +126,17 @@ namespace LevvionAI
         {
             _floats.Remove(key);
             _floats.Add(key, value);
+        }
+
+        /// <summary>
+        /// Sets the float.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        public void SetString(string key, string value)
+        {
+            _strings.Remove(key);
+            _strings.Add(key, value);
         }
     }
 }
