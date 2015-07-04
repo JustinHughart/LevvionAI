@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LevvionAI
 {
-    public class Class1
+    public class AIController
     {
     }
 }
