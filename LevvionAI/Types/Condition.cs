@@ -34,7 +34,6 @@ namespace LevvionAI.Types
         LessThanOrEqual,
     }
 
-
     /// <summary>
     /// Dictates a condition statement.
     /// </summary>

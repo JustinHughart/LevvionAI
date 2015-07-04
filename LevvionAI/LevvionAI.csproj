@@ -55,6 +55,7 @@
     <Compile Include="Types\Conditions\FloatCondition.cs" />
     <Compile Include="Types\Conditions\IntCondition.cs" />
     <Compile Include="Types\Conditions\MultiCondition.cs" />
+    <Compile Include="Types\Conditions\StringCondition.cs" />
     <Compile Include="Types\Node.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
