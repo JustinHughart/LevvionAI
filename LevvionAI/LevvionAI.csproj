@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AIController.cs" />
     <Compile Include="IRandom.cs" />
     <Compile Include="IXmlLoadable.cs" />
     <Compile Include="IXmlSavable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\Action.cs" />
+    <Compile Include="Types\Circle.cs" />
+    <Compile Include="Types\Conditional.cs" />
+    <Compile Include="Types\Node.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
