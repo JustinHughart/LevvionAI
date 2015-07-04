@@ -1,6 +1,7 @@
 ﻿namespace LevvionAI.Types
 {
-    public class Condition
+    public abstract class Condition
     {
+        public string ID;
     }
 }

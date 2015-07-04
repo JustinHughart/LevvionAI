@@ -1,6 +1,9 @@
-﻿namespace LevvionAI.Types
+﻿using System.Collections.Generic;
+
+namespace LevvionAI.Types
 {
-    public class Circle
+    public class Circle : Node
     {
+        public List<Node> Nodes;
     }
 }
