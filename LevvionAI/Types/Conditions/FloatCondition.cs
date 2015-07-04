@@ -51,7 +51,7 @@ namespace LevvionAI.Types.Conditions
                 case EqualityType.LessThanOrEqual:
                     return value <= Value;
                 default:
-                    throw new Exception("Invalid equality type in IntCondtion.IsSatisfied().");
+                    throw new Exception("Invalid equality type in FloatCondtion.IsSatisfied().");
             }
         }
 
