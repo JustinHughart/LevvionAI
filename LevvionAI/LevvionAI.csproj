@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AIController.cs" />
     <Compile Include="AIState.cs" />
+    <Compile Include="AILoader.cs" />
     <Compile Include="IRandom.cs" />
     <Compile Include="IXmlLoadable.cs" />
     <Compile Include="IXmlSavable.cs" />
