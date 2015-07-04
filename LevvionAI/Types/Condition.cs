@@ -1,6 +1,6 @@
 ﻿namespace LevvionAI.Types
 {
-    class Conditional
+    public class Condition
     {
     }
 }
