@@ -14,6 +14,14 @@ namespace LevvionAI.Types.Conditions
         public bool Value;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="BoolCondition"/> class.
+        /// </summary>
+        public BoolCondition()
+        {
+            Value = false;
+        }
+
+        /// <summary>
         /// Determines whether this instance is satisfied.
         /// </summary>
         /// <param name="state">The state of the AI.</param>
