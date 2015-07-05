@@ -13,7 +13,7 @@ namespace LevvionAI.Types
         /// </summary>
         public Condition Condition;
         /// <summary>
-        /// The action to do if ithe condition is satisfied.
+        /// The action to do if ithe condition is satisfied. This is the fallback action in Circles.
         /// </summary>
         public Action Action;
         /// <summary>
