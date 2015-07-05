@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using LevvionAI.Interfaces;
 
-namespace LevvionAI.Types
+namespace LevvionAI.Data
 {
     /// <summary>
     /// An AI action for use in Mask of Levvion.

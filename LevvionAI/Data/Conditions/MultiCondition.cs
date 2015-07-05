@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace LevvionAI.Types.Conditions
+namespace LevvionAI.Data.Conditions
 {
     /// <summary>
     /// A condition that describes having multiple conditions.

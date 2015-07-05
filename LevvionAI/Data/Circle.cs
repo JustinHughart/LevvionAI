@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
+using LevvionAI.Data;
 
-namespace LevvionAI.Types
+namespace LevvionAI.Data
 {
     /// <summary>
     /// A circle of nodes for use in LevvionAI.

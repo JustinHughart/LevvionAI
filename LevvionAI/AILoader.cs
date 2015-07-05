@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
-using LevvionAI.Types;
-using LevvionAI.Types.Conditions;
+using LevvionAI.Data;
+using LevvionAI.Data.Conditions;
 
 namespace LevvionAI
 {

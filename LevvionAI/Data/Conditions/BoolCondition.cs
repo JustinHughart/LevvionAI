@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Linq;
 
-namespace LevvionAI.Types.Conditions
+namespace LevvionAI.Data.Conditions
 {
     /// <summary>
     /// A condition for checking a bool.

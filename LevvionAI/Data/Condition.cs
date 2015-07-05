@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using LevvionAI.Interfaces;
 
-namespace LevvionAI.Types
+namespace LevvionAI.Data
 {
     /// <summary>
     /// An enum denoting a condition's equality type.
