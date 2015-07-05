@@ -81,11 +81,13 @@ namespace LevvionAI.Types
                 if (attribute.ToStringEquals("id"))
                 {
                     ID = attribute.Value;
+                    continue;
                 }
 
                 if (attribute.ToStringEquals("equality"))
                 {
                     EqualityType.TryParse(attribute.Value, out Equality);
+                    continue;
                 }
             }
         }

@@ -61,6 +61,7 @@ namespace LevvionAI.Types.Conditions
                 if (attribute.ToStringEquals("value"))
                 {
                     bool.TryParse(attribute.Value, out Value);
+                    continue;
                 }
             }
         }

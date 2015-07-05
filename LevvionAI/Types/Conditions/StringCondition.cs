@@ -61,6 +61,7 @@ namespace LevvionAI.Types.Conditions
                 if (attribute.ToStringEquals("value"))
                 {
                     Value = attribute.Value;
+                    continue;
                 }
             }
         }

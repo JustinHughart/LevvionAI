@@ -69,6 +69,7 @@ namespace LevvionAI.Types.Conditions
                 if (attribute.ToStringEquals("value"))
                 {
                     float.TryParse(attribute.Value, out Value);
+                    continue;
                 }
             }
         }
