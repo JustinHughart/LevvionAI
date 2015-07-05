@@ -84,7 +84,28 @@ namespace LevvionAI.Types
             }
 
             //Handle elements
+            var conditionelement = element.Element("condition");
 
+            //Surprisingly a mess. Can I do this better?
+            if (conditionelement != null)
+            {
+                if (conditionelement.HasElements)
+                {
+                    var elements = conditionelement.Elements();
+
+                    XElement firstelement = null;
+
+                    foreach (var xElement in elements)
+                    {
+                        firstelement = xElement;
+                        break;
+                    }
+                    
+                    Condition = AILoader.CreateCondition(firstelement);
+                }
+            }
+
+            Action.LoadFromXml(element.Element("action"));
         }
 
         /// <summary>
@@ -104,8 +125,7 @@ namespace LevvionAI.Types
             var conditionelement = new XElement("condition");
             conditionelement.Add(Condition.SaveToXml());
 
-            var actionelement = new XElement("action");
-            actionelement.Add(Action.SaveToXml());
+            element.Add(Action.SaveToXml());
 
             return element;
         }
