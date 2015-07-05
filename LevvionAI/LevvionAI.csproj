@@ -58,6 +58,7 @@
     <Compile Include="Data\Conditions\StringCondition.cs" />
     <Compile Include="Data\Node.cs" />
     <Compile Include="Utility\Cooldown.cs" />
+    <Compile Include="Utility\CooldownManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
