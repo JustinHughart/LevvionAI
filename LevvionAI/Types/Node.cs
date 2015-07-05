@@ -42,10 +42,19 @@ namespace LevvionAI.Types
         }
 
         /// <summary>
+        /// Determines whether this instance is a circle.
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsCircle()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Uses XML to initialize the object.
         /// </summary>
         /// <param name="element">The element used for loading.</param>
-        public void LoadFromXml(XElement element)
+        public virtual void LoadFromXml(XElement element)
         {
             if (element == null)
             {
@@ -82,7 +91,7 @@ namespace LevvionAI.Types
         /// Converts the object to XML.
         /// </summary>
         /// <returns></returns>
-        public XElement SaveToXml()
+        public virtual XElement SaveToXml()
         {
             var element = new XElement("node");
 
