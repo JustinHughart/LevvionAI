@@ -10,7 +10,35 @@ namespace LevvionAI
     public static class AILoader
     {
         /// <summary>
-        /// Creates the condition.
+        /// Creates a node from XML.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <returns></returns>
+        public static Node CreateNode(XElement element)
+        {
+            Node node = null;
+
+            //Certainly there's a more elegant way than this? Switch cases don't work on strings apparantly.
+            if (element.Name.LocalName.ToStringEquals("node"))
+            {
+                node = new Node();
+            }
+            else if (element.Name.LocalName.ToStringEquals("circle"))
+            {
+                node = new Circle();
+            }
+            else 
+            {
+                return null;
+            }
+
+            node.LoadFromXml(element);
+
+            return node;
+        }
+
+        /// <summary>
+        /// Creates a condition from XML.
         /// </summary>
         /// <param name="element">The element.</param>
         /// <returns></returns>
