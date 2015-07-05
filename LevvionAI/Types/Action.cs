@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml.Linq;
-using EssellSeriesStatistics;
+using LevvionAI.Interfaces;
 
 namespace LevvionAI.Types
 {

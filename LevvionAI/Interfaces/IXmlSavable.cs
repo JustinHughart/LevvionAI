@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace EssellSeriesStatistics
+namespace LevvionAI.Interfaces
 {
     /// <summary>
     /// An interface that says you may save the object to XML.

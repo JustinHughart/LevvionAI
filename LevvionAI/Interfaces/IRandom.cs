@@ -1,4 +1,4 @@
-﻿namespace LevvionAI
+﻿namespace LevvionAI.Interfaces
 {
     /// <summary>
     /// An interface to get data from a RNG.
