@@ -2,6 +2,9 @@
 
 namespace LevvionAI
 {
+    /// <summary>
+    /// A class with extension methods and public methods designed to assist Mask Of Levvion.
+    /// </summary>
     public static class LevvionHelper
     {
         #region String Equality
