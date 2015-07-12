@@ -11,11 +11,11 @@ namespace LevvionAITool
 
     public partial class NodeForm : Form
     {
-        private Node _node;
+        public Node Node;
 
         public NodeForm(Node node)
         {
-            _node = node;
+            Node = node;
 
             InitializeComponent();
 
@@ -38,7 +38,7 @@ namespace LevvionAITool
 
         private ConditionType DetectConditionType()
         {
-            string typename = _node.Condition.GetType().Name;
+            string typename = Node.Condition.GetType().Name;
 
             if (typename == "BoolCondition")
             {
@@ -70,25 +70,25 @@ namespace LevvionAITool
 
         private void LoadData()
         {
-            numPriority.Value = _node.Priority;
-            numChance.Value = (decimal)_node.Chance;
-            chkInterrupt.Checked = _node.Interruptable;
+            numPriority.Value = Node.Priority;
+            numChance.Value = (decimal)Node.Chance;
+            chkInterrupt.Checked = Node.Interruptable;
 
             RefreshLabels();
         }
 
         public void RefreshLabels()
         {
-            lblAction.Text = _node.Action.ToString();
-            lblCondition.Text = _node.Condition.ToString();
+            lblAction.Text = Node.Action.ToString();
+            lblCondition.Text = Node.Condition.ToString();
         }
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
             //Action and Condition are handled by their own forms.
-            _node.Priority = (int)numPriority.Value;
-            _node.Chance = (float)numChance.Value;
-            _node.Interruptable = chkInterrupt.Checked;
+            Node.Priority = (int)numPriority.Value;
+            Node.Chance = (float)numChance.Value;
+            Node.Interruptable = chkInterrupt.Checked;
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
