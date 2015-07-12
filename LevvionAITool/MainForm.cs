@@ -1,5 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using LevvionAI;
+using LevvionAI.Data;
 
 namespace LevvionAITool
 {
@@ -9,18 +13,20 @@ namespace LevvionAITool
         /// The path to the file we're working on.
         /// </summary>
         private string _filepath;
+        private const string FileMask = "Mask of LevvionAI (*.lai)|*.lai";
 
         public MainForm()
         {
             InitializeComponent();
+            CreateNewAI();
         }
 
-        private void CreateNewProfile()
+        private void CreateNewAI()
         {
             _filepath = "";
             ChangeTitle();
 
-            lstCircles.
+            lstCircles.Items.Clear();
         }
 
         /// <summary>
@@ -28,11 +34,11 @@ namespace LevvionAITool
         /// </summary>
         private void ChangeTitle()
         {
-            Text = "Essell Series Stat Profile Editor - " + _filepath;
+            Text = "Mask of Levvion - " + _filepath;
 
             if (_filepath.Equals(""))
             {
-                Text += "New Profile";
+                Text += "New AI";
             }
         }
 
@@ -43,7 +49,7 @@ namespace LevvionAITool
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void NewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            CreateNewProfile();
+            CreateNewAI();
         }
 
         /// <summary>
@@ -54,7 +60,7 @@ namespace LevvionAITool
         private void OpenToolStripMenuItemClick(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Essell Series Stat Profile (*.esp)|*.esp";
+            ofd.Filter = FileMask;
             ofd.ShowDialog();
 
             if (ofd.FileName == "")
@@ -62,7 +68,7 @@ namespace LevvionAITool
                 return;
             }
 
-            CreateNewProfile(); //Initialize the data.
+            CreateNewAI(); //Initialize the data.
 
             _filepath = ofd.FileName;
 
@@ -81,7 +87,7 @@ namespace LevvionAITool
             if (_filepath == "")
             {
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Essell Series Stat Profile (*.esp)|*.esp";
+                sfd.Filter = FileMask;
                 sfd.ShowDialog();
 
                 if (sfd.FileName != "")
@@ -108,7 +114,7 @@ namespace LevvionAITool
             bool valid = false;
 
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Essell Series Stat Profile (*.esp)|*.esp";
+            sfd.Filter = FileMask;
             sfd.ShowDialog();
 
             if (sfd.FileName != "")
@@ -143,60 +149,15 @@ namespace LevvionAITool
         {
             path = ValidatePath(path);
 
-            //Modifiers
-            var modifiers = new Dictionary<StatType, float>();
-            modifiers.Add(StatType.Vitality, (float)numVIT.Value);
-            modifiers.Add(StatType.Wisdom, (float)numWIS.Value);
-            modifiers.Add(StatType.Stamina, (float)numSTA.Value);
-            modifiers.Add(StatType.Strength, (float)numSTR.Value);
-            modifiers.Add(StatType.Defense, (float)numDEF.Value);
-            modifiers.Add(StatType.Intelligence, (float)numINT.Value);
-            modifiers.Add(StatType.Resilience, (float)numRES.Value);
-            modifiers.Add(StatType.Speed, (float)numSPD.Value);
-            modifiers.Add(StatType.Accuracy, (float)numACC.Value);
-            modifiers.Add(StatType.Evade, (float)numEVD.Value);
-            modifiers.Add(StatType.Luck, (float)numLUK.Value);
+            var ai = new AIController(null);
 
-            //Stats
-            var stats = new Dictionary<StatType, ProfileStrength>();
-
-            foreach (DataGridViewRow row in dgvStats.Rows)
+            foreach (var item in lstCircles.Items)
             {
-                StatType type = StatType.None;
-                ProfileStrength strength = ProfileStrength.ResistElementHigh;
-
-                if (row.Cells[0].Value == null || row.Cells[1].Value == null)
-                {
-                    continue;
-                }
-
-                type = (StatType)row.Cells[0].Value;
-                strength = (ProfileStrength)row.Cells[1].Value;
-
-                stats.Add(type, strength);
-            }
-
-            //Basic Data
-            var profile = new StatProfile(modifiers, stats);
-            profile.Name = txtName.Text;
-            profile.Description = txtDescription.Text;
-
-            //First we'll back up the old file.
-            if (File.Exists(path))
-            {
-                string backuppath = path + ".bak";
-
-                if (File.Exists(backuppath))
-                {
-                    File.Delete(backuppath);
-                }
-
-                File.Copy(path, backuppath);
-                File.Delete(path);
+                ai.Circles.Add(item as Circle);
             }
 
             //Then save it!
-            var doc = new XDocument(profile.SaveToXml());
+            var doc = new XDocument(ai.SaveToXml());
 
             using (var stream = File.OpenWrite(path))
             {
@@ -220,35 +181,12 @@ namespace LevvionAITool
 
             //Load the profile.
             XDocument doc = XDocument.Load(path);
-            var profile = new StatProfile();
-            profile.LoadFromXml(doc.Root);
+            var ai = new AIController(null);
+            ai.LoadFromXml(doc.Root);
 
-            //Assign basic data.
-            txtName.Text = profile.Name;
-            txtDescription.Text = profile.Description;
-
-            //Assign modifiers.
-            numVIT.Value = (decimal)profile.GetModifier(StatType.Vitality);
-            numWIS.Value = (decimal)profile.GetModifier(StatType.Wisdom);
-            numSTA.Value = (decimal)profile.GetModifier(StatType.Stamina);
-            numSTR.Value = (decimal)profile.GetModifier(StatType.Strength);
-            numDEF.Value = (decimal)profile.GetModifier(StatType.Defense);
-            numINT.Value = (decimal)profile.GetModifier(StatType.Intelligence);
-            numRES.Value = (decimal)profile.GetModifier(StatType.Resilience);
-            numSPD.Value = (decimal)profile.GetModifier(StatType.Speed);
-            numACC.Value = (decimal)profile.GetModifier(StatType.Accuracy);
-            numEVD.Value = (decimal)profile.GetModifier(StatType.Evade);
-            numLUK.Value = (decimal)profile.GetModifier(StatType.Luck);
-
-            //Assign stats.
-            var stats = profile.GetPrivateDataCopy().Item2;
-
-            foreach (var stat in stats)
+            foreach (var circle in ai.Circles)
             {
-                var row = new object[2];
-                row[0] = stat.Key;
-                row[1] = stat.Value;
-                dgvStats.Rows.Add(row);
+                AddNewItem(circle);
             }
         }
 
@@ -267,7 +205,24 @@ namespace LevvionAITool
             return input;
         }
 
+        private void BtnEditClick(object sender, EventArgs e)
+        {
 
+        }
 
+        private void BtnAddNewClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDeleteClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddNewItem(Circle circle)
+        {
+            lstCircles.Items.Add(circle);
+        }
     }
 }
