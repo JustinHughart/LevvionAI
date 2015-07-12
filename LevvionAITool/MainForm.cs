@@ -224,7 +224,7 @@ namespace LevvionAITool
         {
             if (lstCircles.SelectedItem != null)
             {
-                var form = new CircleForm(lstCircles.SelectedItem);
+                var form = new CircleForm(lstCircles.SelectedItem as Circle);
                 form.Show();
             }
         }
