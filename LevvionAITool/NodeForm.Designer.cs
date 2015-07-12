@@ -100,6 +100,7 @@
             this.btnAction.TabIndex = 5;
             this.btnAction.Text = "Edit Action";
             this.btnAction.UseVisualStyleBackColor = true;
+            this.btnAction.Click += new System.EventHandler(this.BtnActionClick);
             // 
             // lblAction
             // 
@@ -118,6 +119,7 @@
             this.txtCondition.TabIndex = 7;
             this.txtCondition.Text = "Edit Condition";
             this.txtCondition.UseVisualStyleBackColor = true;
+            this.txtCondition.Click += new System.EventHandler(this.TxtConditionClick);
             // 
             // lblCondition
             // 

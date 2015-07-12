@@ -58,6 +58,36 @@
     <Compile Include="CircleForm.Designer.cs">
       <DependentUpon>CircleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConditionForms\BoolConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionForms\BoolConditionForm.Designer.cs">
+      <DependentUpon>BoolConditionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionForms\FloatConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionForms\FloatConditionForm.Designer.cs">
+      <DependentUpon>FloatConditionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionForms\IntConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionForms\IntConditionForm.Designer.cs">
+      <DependentUpon>IntConditionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionForms\MultiConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionForms\MultiConditionForm.Designer.cs">
+      <DependentUpon>MultiConditionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionForms\StringConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionForms\StringConditionForm.Designer.cs">
+      <DependentUpon>StringConditionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
