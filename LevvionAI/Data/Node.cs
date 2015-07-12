@@ -1,4 +1,5 @@
 ﻿using System.Xml.Linq;
+using LevvionAI.Data.Conditions;
 using LevvionAI.Interfaces;
 
 namespace LevvionAI.Data
@@ -34,7 +35,7 @@ namespace LevvionAI.Data
         /// </summary>
         public Node()
         {
-            Condition = null;
+            Condition = new BoolCondition();
             Action = new Action();
             Priority = 0;
             Chance = 0;
