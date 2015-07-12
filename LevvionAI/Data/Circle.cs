@@ -55,6 +55,9 @@ namespace LevvionAI.Data
             {
                 Nodes.Add(AILoader.CreateNode(nodeelement));
             }
+
+            Nodes.Sort();
+            Nodes.Reverse();
         }
 
         /// <summary>
