@@ -10,7 +10,7 @@ namespace LevvionAI
     public static class AILoader
     {
         /// <summary>
-        /// Creates a node from XML.
+        /// Creates a node or circle from XML.
         /// </summary>
         /// <param name="element">The element.</param>
         /// <returns></returns>
