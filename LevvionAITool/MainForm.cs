@@ -7,20 +7,32 @@ using LevvionAI.Data;
 
 namespace LevvionAITool
 {
+    /// <summary>
+    /// The main form. Wow such helpful documentation.
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
         /// The path to the file we're working on.
         /// </summary>
         private string _filepath;
+        /// <summary>
+        /// The file mask for saving/loading.
+        /// </summary>
         private const string FileMask = "Mask of LevvionAI (*.lai)|*.lai";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainForm"/> class.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
             CreateNewAI();
         }
 
+        /// <summary>
+        /// Creates the new ai.
+        /// </summary>
         private void CreateNewAI()
         {
             _filepath = "";
@@ -46,7 +58,7 @@ namespace LevvionAITool
         /// Triggers when the new button is clicked.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void NewToolStripMenuItemClick(object sender, EventArgs e)
         {
             CreateNewAI();
@@ -56,7 +68,7 @@ namespace LevvionAITool
         /// Triggers when the open button is clicked.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void OpenToolStripMenuItemClick(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -81,7 +93,7 @@ namespace LevvionAITool
         /// Triggers when the save button is clicked.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void SaveToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (_filepath == "")
@@ -108,7 +120,7 @@ namespace LevvionAITool
         /// Triggers when the save as button is clicked.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void SaveAsToolStripMenuItemClick(object sender, EventArgs e)
         {
             bool valid = false;
@@ -134,7 +146,7 @@ namespace LevvionAITool
         /// Triggers when the exit button is clicked.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             Close();
@@ -170,11 +182,9 @@ namespace LevvionAITool
         /// </summary>
         /// <param name="path">The path.</param>
         /// <exception cref="System.ArgumentException">File type not supported.</exception>
-        /// <exception cref="System.Xml.XmlException">
-        /// No root.
+        /// <exception cref="System.Xml.XmlException">No root.
         /// or
-        /// Root is not an entity.
-        /// </exception>
+        /// Root is not an entity.</exception>
         private void LoadFromFile(string path)
         {
             path = ValidatePath(path);
@@ -205,24 +215,51 @@ namespace LevvionAITool
             return input;
         }
 
+        /// <summary>
+        /// Edits an item. 
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnEditClick(object sender, EventArgs e)
         {
-
+            if (lstCircles.SelectedItem != null)
+            {
+                var form = new CircleForm(lstCircles.SelectedItem);
+                form.Show();
+            }
         }
 
+        /// <summary>
+        /// Adds a new item.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnAddNewClick(object sender, EventArgs e)
         {
-
+            AddNewItem(new Circle());
         }
 
+        /// <summary>
+        /// Deletes the item.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnDeleteClick(object sender, EventArgs e)
         {
-
+            if (lstCircles.SelectedItem != null)
+            {
+                lstCircles.Items.Remove(lstCircles.SelectedItem);
+            }
         }
 
+        /// <summary>
+        /// Adds the new item.
+        /// </summary>
+        /// <param name="circle">The circle.</param>
         private void AddNewItem(Circle circle)
         {
             lstCircles.Items.Add(circle);
+            lstCircles.RefreshToString();
         }
     }
 }

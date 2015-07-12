@@ -46,11 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CircleForm.Designer.cs">
+      <DependentUpon>CircleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NodeForm.Designer.cs">
+      <DependentUpon>NodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
