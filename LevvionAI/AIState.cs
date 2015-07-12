@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LevvionAI.Data
+namespace LevvionAI
 {
     /// <summary>
     /// A class holding the state of an entity's AI.
