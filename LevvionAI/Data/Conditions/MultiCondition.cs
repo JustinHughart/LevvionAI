@@ -85,5 +85,28 @@ namespace LevvionAI.Data.Conditions
 
             return element;
         }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            var retval = "{" +
+                         "MultiCondition : ";
+
+            foreach (var condition in Conditions)
+            {
+                retval += condition + ",";
+            }
+
+            retval.Remove(retval.Length - 1); //Clear the last ,
+
+            retval += "}";
+
+            return retval;
+        }
     }
 }

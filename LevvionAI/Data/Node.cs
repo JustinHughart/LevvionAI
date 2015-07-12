@@ -10,13 +10,13 @@ namespace LevvionAI.Data
     public class Node : IXmlLoadable, IXmlSavable 
     {
         /// <summary>
-        /// The condition to be satisfied for the node to be accessed.
-        /// </summary>
-        public Condition Condition;
-        /// <summary>
         /// The action to do if ithe condition is satisfied. This is the fallback action in Circles.
         /// </summary>
         public Action Action;
+        /// <summary>
+        /// The condition to be satisfied for the node to be accessed.
+        /// </summary>
+        public Condition Condition;
         /// <summary>
         /// The priority of the action compared to others.
         /// </summary>
@@ -129,6 +129,23 @@ namespace LevvionAI.Data
             element.Add(Action.SaveToXml());
 
             return element;
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return "{Node: " +
+                   Action + "," +
+                   Condition + "," +
+                   "Priority: " + Priority +
+                   "Chance: " + Chance + 
+                   "Interruptable: " + Interruptable +
+                   "}";
         }
     }
 }
