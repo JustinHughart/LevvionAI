@@ -1,6 +1,8 @@
-﻿using System.Xml.Linq;
+﻿using System.IO;
+using System.Xml.Linq;
 using LevvionAI.Data;
 using LevvionAI.Data.Conditions;
+using LevvionAI.Interfaces;
 
 namespace LevvionAI
 {
@@ -71,6 +73,45 @@ namespace LevvionAI
             condition.LoadFromXml(element);
 
             return condition;
+        }
+
+        /// <summary>
+        /// Loads the AI.
+        /// </summary>
+        /// <param name="rng">The RNG.</param>
+        /// <param name="path">The path.</param>
+        /// <returns></returns>
+        public static AIController LoadAI(IRandom rng, string path)
+        {
+            var doc = XDocument.Load(path);
+
+            return LoadController(rng, doc);
+        }
+
+        /// <summary>
+        /// Loads the AI.
+        /// </summary>
+        /// <param name="rng">The RNG.</param>
+        /// <param name="stream">The stream.</param>
+        /// <returns></returns>
+        public static AIController LoadAI(IRandom rng, Stream stream)
+        {
+            var doc = XDocument.Load(stream);
+
+            return LoadController(rng, doc);
+        }
+
+        /// <summary>
+        /// Loads the controller.
+        /// </summary>
+        /// <param name="rng">The RNG.</param>
+        /// <param name="document">The document.</param>
+        /// <returns></returns>
+        private static AIController LoadController(IRandom rng, XDocument document)
+        {
+            var ai = new AIController(rng);
+            ai.LoadFromXml(document.Root);
+            return ai;
         }
     }
 }
